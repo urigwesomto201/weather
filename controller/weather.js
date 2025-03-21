@@ -10,15 +10,17 @@ try {
         };
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
         // const { data } = response
-        const {name,main,weather,wind} = response.data;
+        const {name,main,weather,wind,sys} = response.data;
 
         res.status(201).json({
             message: "weather gotten  successfully",
+           
             data:{
-                city:name,
+                city:`${name},${sys.country}`,
                 temperature:main.temp,
                 condition:weather[0].description,
-                wind_speed:wind.speed
+                wind_speed:wind.speed,
+                humidity: main.humidity
             }
         })
     
