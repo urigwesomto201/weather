@@ -7,7 +7,7 @@ const weatherrouter =require('./routes/weather')
 const app = express()
 app.use(express.json());
 app.use(weatherrouter);
-app.use(cors())
+app.use(cors({origin:"*"}))
 app.use(morgan('dev'));
 app.listen(PORT,()=>{
   console.log(`server listenimg to ${PORT}`);
