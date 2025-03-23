@@ -8,8 +8,9 @@ const app = express()
 
 app.use(cors({origin:"*"}))
 app.use(express.json());
-app.use(weatherrouter);
 app.use(morgan('dev'));
+app.use(weatherrouter);
+
 app.listen(PORT,()=>{
   console.log(`server listenimg to ${PORT}`);
   
